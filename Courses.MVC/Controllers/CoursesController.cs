@@ -34,7 +34,7 @@ namespace Courses.MVC.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Create()
+        public  IActionResult Create()
         {
             return View();
         }
@@ -124,7 +124,13 @@ namespace Courses.MVC.Controllers
             }
             return View();
         }
-        
+        //[HttpPost]
+        //public ActionResult Delete(int )
+        //{
+        //    CourseViewModel OBJ = new CourseViewModel();
+        //    OBJ.DeleteCourse();
+        //    return RedirectToAction("Index")
+        //}
     }
 }
 
