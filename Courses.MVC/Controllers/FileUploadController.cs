@@ -46,7 +46,7 @@ namespace Courses.MVC.Controllers
                 var result = await client.PostAsJsonAsync("FileUpload/Upload", form);
                 if (result.StatusCode == System.Net.HttpStatusCode.Created)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Documents");
                 }
             }
             return View();
@@ -80,7 +80,7 @@ namespace Courses.MVC.Controllers
                 var result = await client.DeleteAsync($"FileUpload/DeleteImage/{form.Id}");
                 if (result.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Documents");
                 }
             }
             return View();

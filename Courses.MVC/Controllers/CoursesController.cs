@@ -52,7 +52,7 @@ namespace Courses.MVC.Controllers
                     var result = await client.PostAsJsonAsync("Course/CreateCourse", course);
                     if (result.IsSuccessStatusCode)
                     {
-                        return RedirectToAction("Index");
+                        return RedirectToAction("AllCourses");
                     }
                 }
             }
@@ -105,7 +105,7 @@ namespace Courses.MVC.Controllers
                     var result = await client.PutAsJsonAsync($"Course/UpdateCourse/{course.CourseId}", course);
                     if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
                     {
-                        return RedirectToAction("Index");
+                        return RedirectToAction("AllCourses");
                     }
                 }
             }
@@ -134,7 +134,7 @@ namespace Courses.MVC.Controllers
                 var result = await client.DeleteAsync($"Course/DeleteCourse/{courses.CourseId}");
                 if (result.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("AllCourses");
                 }
             }
             return View(courses);
