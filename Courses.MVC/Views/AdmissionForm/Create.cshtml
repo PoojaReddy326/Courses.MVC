@@ -47,8 +47,11 @@
             </div>
             <div class="mb-2">
                 <label asp-for="Gender" class="form-label"></label>
-                <input type="text" asp-for="Gender" class="form-control" />
-                <span asp-validation-for="Gender"></span>
+                <select asp-for="Gender" class="form-control">
+                    <option value="">---Select---</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                </select>
             </div>
             <div class="mb-2">
                 <label asp-for="City" class="form-label"></label>
@@ -57,8 +60,14 @@
             </div>
             <div class="mb-2">
                 <label asp-for="State" class="form-label"></label>
-                <input type="text" asp-for="State" class="form-control" />
-                <span asp-validation-for="State"></span>
+                <select asp-for="State" class="form-control">
+                    <option value="">---Select---</option>
+                    <option value="1">Telangana</option>
+                    <option value="2">Andhra Pradesh</option>
+                    <option value="3">Maharastra</option>
+                    <option value="4">Delhi</option>
+                    <option value="5">Kerala</option>
+                </select>
             </div>
             <div class="mb-2">
                 <label asp-for="Address" class="form-label"></label>
@@ -67,8 +76,11 @@
             </div>
             <div class="mb-2">
                 <label asp-for="Qualification" class="form-label"></label>
-                <input type="text" asp-for="Qualification" class="form-control" />
-                <span asp-validation-for="Qualification"></span>
+                <select asp-for="Qualification" class="form-control">
+                    <option value="">---Select---</option>
+                    <option value="1">Inter</option>
+                    <option value="2">Diploma</option>
+                </select>
             </div>
             <div class="mb-2">
                 <label asp-for="EntranceTestScore" class="form-label"></label>

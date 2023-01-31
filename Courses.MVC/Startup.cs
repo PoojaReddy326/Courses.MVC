@@ -23,6 +23,10 @@ namespace Courses.MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSession(o =>
+            {
+                o.IdleTimeout = TimeSpan.FromMinutes(1);
+            });
             services.AddControllersWithViews();
         }
 
@@ -43,6 +47,7 @@ namespace Courses.MVC
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 
