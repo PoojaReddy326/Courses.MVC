@@ -1,0 +1,43 @@
+﻿@model IEnumerable<FormViewModel>
+@{
+    ViewData["Title"] = "Index";
+} 
+<h1>Index</h1> 
+<div class="row">
+    <div class="col-md-7">
+        <div class="row">
+            <div class="col">
+                <h2>List of Customers</h2>
+            </div>
+            <div class="col text-end">
+                <a asp-controller="AdmissionForm" asp-action="Create" class="btn btn-warning">Create new Customer</a>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>LastName</th>
+                        <th>EmailId </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.EmailId </td>
+                            <td>
+                                <a asp-controller="AdmissionForm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                <a asp-controller="AdmissionForm" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                <a asp-controller="AdmissionForm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
