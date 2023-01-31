@@ -2,21 +2,25 @@
 @{
     ViewData["Title"] = "Delete";
 }
-<h1>Delete -  Course</h1>
 
-<div class="row">
-    <div class="col-md-5">
-        <ul class="list-group">
-            <li class="list-group-item"><b>Course :</b> @Model.CourseName</li>
+<h1>Delete</h1>
+
+<form asp-controller="Courses" asp-action="Delete" method="post">
+    <input type="hidden" asp-for="CourseId" />
+    <div class="row">
+        <div class="col-md-5">
+            <ul class="list-group">
+                <li class="list-group-item"><b>Course :</b> @Model.CourseName</li>
             </ul>
             <div>
                 Are sure do you want to delete this Course?
             </div>
             <div>
-                    <form asp-controller="Courses" asp-action="Delete" method="post">
-                    <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-            </div> 
-                <a asp-controller="Courses" asp-action="Index">Back to List</a>
+
+                <button type="submit" class="btn btn-danger">Delete</button>
             </div>
-     </div>
+            <a asp-controller="Courses" asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</form>
+

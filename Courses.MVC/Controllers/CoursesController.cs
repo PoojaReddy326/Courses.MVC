@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Security.Authentication;
 using System.Threading.Tasks;
 
 namespace Courses.MVC.Controllers
@@ -17,7 +16,12 @@ namespace Courses.MVC.Controllers
         {
             _configuration = configuration;
         }
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> AllCourses()
         {
             List<CourseViewModel> courses = new();
             using (var client = new HttpClient())
@@ -28,13 +32,12 @@ namespace Courses.MVC.Controllers
                 {
                     courses = await result.Content.ReadAsAsync<List<CourseViewModel>>();
                 }
-
             }
             return View(courses);
         }
 
         [HttpGet]
-        public  IActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -109,28 +112,49 @@ namespace Courses.MVC.Controllers
             return View();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            CourseViewModel courses = await this.CourseById(id);
+            if (courses != null)
+            {
+                return View(courses);
+            }
+            ModelState.AddModelError("", "Server Error. Please try later");
+            return View(courses);
+        }
+
         [HttpPost]
-        public async Task<IActionResult> Delete(CourseViewModel course)
+        public async Task<IActionResult> Delete(CourseViewModel courses)
         {
             using (var client = new HttpClient())
             {
                 //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
-                client.BaseAddress = new System.Uri(_configuration["ApiUrl:api"]);
-                var result = await client.DeleteAsync($"Course/DeleteCourse/{course.CourseId}");
+                client.BaseAddress = new Uri(_configuration["ApiUrl:api"]);
+                var result = await client.DeleteAsync($"Course/DeleteCourse/{courses.CourseId}");
                 if (result.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");
                 }
             }
-            return View();
+            return View(courses);
         }
-        //[HttpPost]
-        //public ActionResult Delete(int )
-        //{
-        //    CourseViewModel OBJ = new CourseViewModel();
-        //    OBJ.DeleteCourse();
-        //    return RedirectToAction("Index")
-        //}
+
+        [NonAction]
+        public async Task<CourseViewModel> CourseById(int id)
+        {
+            CourseViewModel course = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new System.Uri(_configuration["ApiUrl:api"]);
+                var result = await client.GetAsync($"Course/GetCourseById/{id}");
+                if (result.IsSuccessStatusCode)
+                {
+                    course = await result.Content.ReadAsAsync<CourseViewModel>();
+                }
+            }
+            return course;
+        }
     }
 }
 

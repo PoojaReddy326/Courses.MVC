@@ -1,0 +1,19 @@
+﻿@model PaymentViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+<h1> Details</h1>
+<div class="row">
+    <div class="col-md-5">
+        <ul class="list-group">
+            <li class="list-group-item"><b>Referance Number :</b>@Model.ReferenceNumber</li>
+            <li class="list-group-item"><b>Amount :</b>@Model.Amount</li>
+        </ul>
+        @* <div>
+        <form asp-controller="AdmissionForm" asp-action="Details" method="post">
+        <button type="submit" class="btn btn-danger">Details</button>
+        </form>
+        </div>*@
+        <a asp-controller="AdmissionForm" asp-action="Index">Back to List</a>
+    </div>
+</div>

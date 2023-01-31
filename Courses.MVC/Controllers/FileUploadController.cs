@@ -14,9 +14,9 @@ namespace Courses.MVC.Controllers
         public FileUploadController(IConfiguration configuration)
         {
             _configuration = configuration;
-        }
+        }   
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Documents()
         {
             List<FileViewModel> files = new();
             using (var client = new HttpClient())
@@ -53,14 +53,14 @@ namespace Courses.MVC.Controllers
         }
         [HttpGet]
 
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details()
         {
 
             FileViewModel form = null;
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(_configuration["ApiUrl:api"]);
-                var result = await client.GetAsync($"Fileupload/Get/{id}");
+                var result = await client.GetAsync($"Documents/GetAllImages");
                 if (result.IsSuccessStatusCode)
                 {
                     form = await result.Content.ReadAsAsync<FileViewModel>();

@@ -14,7 +14,12 @@ namespace Courses.MVC.Controllers
         {
             _configuration = configuration;
         }
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> AllPayments()
         {
             List<PaymentViewModel> payments = new();
             using (var client = new HttpClient())
