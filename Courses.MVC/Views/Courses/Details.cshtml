@@ -1,28 +1,36 @@
-﻿
-@model IEnumerable<CourseViewModel>
+﻿@model IEnumerable<CourseViewModel>
 @{
     ViewData["Title"] = "Course";
-} <h1>Index</h1> 
+}
+<body style="background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(https://thumbs.dreamstime.com/b/education-school-university-books-college-classes-16441446.jpg);background-repeat:no-repeat; background-size:cover;">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="row">
+                <div class="col">
+                    <h1 style="color:chocolate;font-weight:bold">Courses</h1>                    
+                </div>                
+            </div>            
+        </div>        
+    </div>
+</body> 
 <div class="row offset-2 pt-4">
     <div class="col-md-9">
         <table class="table table-hover border-2">
-            <thead>
                 <tr>
-                    <th scope="col">Course Name</th>
-                </tr>
-            </thead>
+                    <th style="color:white; font-weight:bold" scope="col"><b>Course Name</b></th>
+                </tr>                
             <tbody>
                 @foreach (var item in Model)
                 { 
                     <tr class="table-dark">
-                        <td>@item.CourseName</td>
-                        @*<td class="pl-3">
-                            <a asp-controller="Courses" asp-action="Details" asp-route-id="@item.CourseId" class="btn btn-light">Details</a>
-                        </td>*@
+                       <td style="color:Black"><b>@item.CourseName</b></td>
+                        @*<td class="pl-3"><a asp-controller="Courses" asp-action="Details" asp-route-id="@item.CourseId" class="btn btn-light">Details</a></td>*@
                     </tr>
                 }
             </tbody>
         </table>
-    </div>
+        <div>
+            <a asp-controller="Courses" asp-action="AllCourses" style="color:white">Back to List</a>
+        </div>
+    </div>    
 </div>
-

@@ -3,9 +3,14 @@
     ViewData["Title"] = "Create";
 }
 
-<h1> Create a New Admission</h1>
+<h1 style="color:aliceblue;font-weight:bold;"> Create a New Admission</h1>
+<style>
+    .container{
+        border: 1px solid;
+    }
+</style>
 
-
+<body class="container" style="background-image: linear-gradient(rgba(1,1,1,0.4),rgba(3,9,20,0.7)),url(https://images.unsplash.com/photo-1614620026694-f5f38182ab9f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGxpYnJhcnklMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60);color:aliceblue;font-weight:bold;">
 <form asp-controller="AdmissionForm" asp-action="Create" method="post">
     <div class="row">
         <div class="col-md-4">
@@ -93,4 +98,5 @@
         </div>
     </div>
 </form>
+</body>
 

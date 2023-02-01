@@ -1,41 +1,36 @@
 ﻿@model IEnumerable<CourseViewModel>
 @{
     ViewData["Title"] = "AllCourses";
-}
-<div class="row">
-    <div class="col-md-7">
-        <div class="row">
-            <div class="col">
-                <h2>List of Courses</h2>
+} 
+<body style="background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(https://thumbs.dreamstime.com/b/education-school-university-books-college-classes-16441446.jpg);">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="row">
+                <div class="col">
+                    <h2 style="color:aliceblue;font-weight:bold;">List of Courses</h2>
+                </div>              
             </div>
-            <div class="col text-end">
-                <a asp-controller="Courses" asp-action="Create" class="btn btn-warning">Create new Customer</a>
+            <div class="row">
+                <table class="table table-success table-striped">
+                    <thead><tr><th>CourseName</th><th></th></tr></thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.CourseName</td>            
+                                <td>
+                                    <a asp-controller="Courses" asp-action="Update" asp-route-id="@item.CourseId" class="btn btn-primary">Edit</a>
+                                    <a asp-controller="Courses" asp-action="Details" asp-route-id="@item.CourseId" class="btn btn-warning">Details</a>
+                                    <a asp-controller="Courses" asp-action="Delete" asp-route-id="@item.CourseId" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="col text-end">
+                    <a asp-controller="Courses" asp-action="Create" class="btn btn-info">Create</a>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>CourseName</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@item.CourseName</td>
-
-                            <td>
-                                <a asp-controller="Courses" asp-action="Update" asp-route-id="@item.CourseId">Edit</a>
-                                <a asp-controller="Courses" asp-action="Details" asp-route-id="@item.CourseId">Details</a>
-                                <a asp-controller="Courses" asp-action="Delete" asp-route-id="@item.CourseId">Delete</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
         </div>
     </div>
-</div>
-
+</body> 
