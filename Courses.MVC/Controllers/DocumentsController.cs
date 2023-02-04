@@ -53,7 +53,7 @@ namespace Courses.MVC.Controllers
                 }
 
                 model.ImageUrl = "/Images/" + model.Images.FileName;
-            }
+            }       
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(_configuration["ApiUrl:api"]);

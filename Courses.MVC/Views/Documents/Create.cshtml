@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Create";
 }
-
+<h1> Upload Documents</h1>
 <div class="col8">
 
     <form class="mt-5" asp-controller="Documents" asp-action="Create" method="post" enctype="multipart/form-data">
@@ -20,3 +20,8 @@
         <button type="submit" class="btn btn-outline-secondary mt-2" id="inputGroupFileAddon04">Click to Add Image</button>
     </form>
 </div>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+    }
+}

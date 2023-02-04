@@ -21,10 +21,12 @@ namespace Courses.MVC.Models
         [Display(Name = "Mother Name")]
         public string MotherName { get; set; }
         [Required(ErrorMessage = "Please Provide Valid EmailID")]
-
+        [RegularExpression("^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$", ErrorMessage = "Invalid Email Id")]
         public string EmailId { get; set; }
         [Required(ErrorMessage = "Please Provide Valid Mobile Number")]
 
+
+        [Phone] 
         public string PhoneNumber { get; set; }
         [Required(ErrorMessage = "Please Provide Gender")]
 

@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Http;
+@{
+    var isvalid = Context.Session.GetString("token");
+} 
+@if (isvalid != null)
+{
+    <ul class="navbar-nav my-2 my-sm-0"><li class="nav-item">
+        <a asp-controller="Admin" asp-action="Login" class="nav-link" style="color:white">welcome,@ViewBag.FirstName</a></li>
+        <li class="nav-item">
+            <form asp-controller="Admin" asp-action="LogOut" method="post">
+                <input type="submit" class="btn btn-link nav-link" style="color:white" value="Sign Out" />
+                </form>     </li> </ul>
+}
+else
+{
+    <ul class="navbar-nav my-2 my-sm-0">
+        @*<li class="nav-item"><a class="nav-link " asp-area="" asp-controller="Accounts" asp-action="SignUp">Register</a></li>*@
+        <li class="nav-item d-flex"><a class="nav-link " asp-area="" asp-controller="Admin" asp-action="Login">Login</a></li>
+    </ul>
+}

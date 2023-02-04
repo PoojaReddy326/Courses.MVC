@@ -19,6 +19,21 @@ namespace Courses.MVC.Controllers
             return View();
         }
 
+        public IActionResult Pay()
+        {
+            return View();
+        }
+
+        public IActionResult Upi()
+        {
+            return View();
+        }
+
+        public IActionResult Card()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> AllPayments()
         {
             List<PaymentViewModel> payments = new();

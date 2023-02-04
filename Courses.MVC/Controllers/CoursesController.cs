@@ -59,22 +59,6 @@ namespace Courses.MVC.Controllers
             return View();
         }
 
-
-        public async Task<IActionResult> Details()
-        {
-            List<CourseViewModel> course = new();
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(_configuration["ApiUrl:api"]);
-                var result = await client.GetAsync("Course/DisplayCourses");
-                if (result.IsSuccessStatusCode)
-                {
-                    course = await result.Content.ReadAsAsync<List<CourseViewModel>>();
-                }
-            }
-            return View(course);
-        }
-
         [HttpGet]
         public async Task<IActionResult> Update(int Id)
         {
@@ -89,10 +73,8 @@ namespace Courses.MVC.Controllers
                     return View(course);
                 }
             }
-
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> Update(CourseViewModel course)
         {
@@ -100,7 +82,6 @@ namespace Courses.MVC.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
                     client.BaseAddress = new Uri(_configuration["ApiUrl:api"]);
                     var result = await client.PutAsJsonAsync($"Course/UpdateCourse/{course.CourseId}", course);
                     if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
@@ -129,7 +110,6 @@ namespace Courses.MVC.Controllers
         {
             using (var client = new HttpClient())
             {
-                //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
                 client.BaseAddress = new Uri(_configuration["ApiUrl:api"]);
                 var result = await client.DeleteAsync($"Course/DeleteCourse/{courses.CourseId}");
                 if (result.IsSuccessStatusCode)

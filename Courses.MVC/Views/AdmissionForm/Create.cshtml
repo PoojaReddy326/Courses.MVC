@@ -54,8 +54,8 @@
                 <label asp-for="Gender" class="form-label"></label>
                 <select asp-for="Gender" class="form-control">
                     <option value="">---Select---</option>
-                    <option value="1">Male</option>
-                    <option value="2">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                 </select>
             </div>
             <div class="mb-2">
@@ -67,11 +67,11 @@
                 <label asp-for="State" class="form-label"></label>
                 <select asp-for="State" class="form-control">
                     <option value="">---Select---</option>
-                    <option value="1">Telangana</option>
-                    <option value="2">Andhra Pradesh</option>
-                    <option value="3">Maharastra</option>
-                    <option value="4">Delhi</option>
-                    <option value="5">Kerala</option>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Maharastra">Maharastra</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Kerala">Kerala</option>
                 </select>
             </div>
             <div class="mb-2">
@@ -83,8 +83,8 @@
                 <label asp-for="Qualification" class="form-label"></label>
                 <select asp-for="Qualification" class="form-control">
                     <option value="">---Select---</option>
-                    <option value="1">Inter</option>
-                    <option value="2">Diploma</option>
+                        <option value="Inter">Inter</option>
+                        <option value="Diploma">Diploma</option>
                 </select>
             </div>
             <div class="mb-2">
@@ -95,8 +95,9 @@
             <div class="mt-2 d-grid">
                 <input type="submit" class="btn btn-primary" value="Add New" />
             </div>
-        </div>
-    </div>
+            </div>            
+        </div>       
 </form>
+    <a asp-controller="Home" asp-action="Index">Back to Home</a>
 </body>
 

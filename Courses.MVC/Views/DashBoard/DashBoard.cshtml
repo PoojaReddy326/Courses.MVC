@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "DashBoard";
+} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+              .sidenav {
+                        background-color: #C0C0C0;
+                      width:250px;
+                      height:600px;
+                      margin-left:-110px;
+                      margin-top:-21px;
+
+        }
+
+              .sidenav, ul, li {
+                      font-size:15px;
+                      color:dodgerblue;
+
+        }
+
+              .sidenav, ul, li, a {
+                      text-decoration:none;
+
+        }</style>
+</head>
+<body>
+    <div class="sidenav">
+        <p style="font-size:30px;color:black;">Dashboard</p>
+        <ul>            
+            <br />
+            <li><a asp-controller="AdmissionForm" asp-action="ApplicationDetails" >Registered Users</a></li>
+            <br />           
+            <li><a asp-controller="Documents" asp-action="Index">User Documents</a></li>
+            <br />
+            <li><a asp-controller="Courses" asp-action="AllCourses">Course</a></li>
+            <br />
+            <li><a asp-controller="Payment" asp-action="AllPayments">Payment</a></li>
+            <br />
+        </ul>
+    </div>  
+</body>
+</html>

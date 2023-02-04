@@ -16,13 +16,15 @@ namespace Courses.MVC.Controllers
         {
             _configuration = configuration;
         }
-
+        //Function Used to returning all Application Details
         public async Task<IActionResult> ApplicationDetails()
         {
             List<FormViewModel> forms = new();
             using (var client = new HttpClient())
             {
+                //ApiUrl is used for accessing functions from .NET Core api
                 client.BaseAddress = new System.Uri(_configuration["ApiUrl:api"]);
+                //Passing method name should be same as in api
                 var result = await client.GetAsync("ApplicationForms/GetAllForms");
                 if (result.IsSuccessStatusCode)
                 {
@@ -33,7 +35,7 @@ namespace Courses.MVC.Controllers
             return View(forms);
         }
 
-      
+      //Function Used for Getting Specific details of Student
         [Route("AdmissionForm/Details/{id}")]
         [HttpGet]
 
@@ -53,7 +55,7 @@ namespace Courses.MVC.Controllers
             }
             return View(form);
         }
-
+        //Function for application drop
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -119,7 +121,7 @@ namespace Courses.MVC.Controllers
             {
                 using (var client = new HttpClient())
                 {
-                    //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
+                    
                     client.BaseAddress = new Uri(_configuration["ApiUrl:api"]);
                     var result = await client.PutAsJsonAsync($"ApplicationForms/UpdateForm/{form.Id}", form);
                     if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
@@ -137,7 +139,7 @@ namespace Courses.MVC.Controllers
         {
             using (var client = new HttpClient())
             {
-                //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("token"));
+                
                 client.BaseAddress = new System.Uri(_configuration["ApiUrl:api"]);
                 var result = await client.DeleteAsync($"ApplicationForms/DeleteForm/{form.Id}");
                 if (result.IsSuccessStatusCode)

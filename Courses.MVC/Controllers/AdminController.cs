@@ -14,6 +14,7 @@ namespace Courses.MVC.Controllers
         {
             _configuration = configuration;
         }
+        //We are Creating a ActionResult for login of Admin
         [HttpGet]
         public IActionResult Login()
         {
@@ -32,9 +33,10 @@ namespace Courses.MVC.Controllers
                     var result = await client.PostAsJsonAsync("Admin/Login", admin);
                     if (result.IsSuccessStatusCode)
                     {
+                        //Using JWT Package we are generating Token
                         string token = await result.Content.ReadAsAsync<string>();
                         HttpContext.Session.SetString("token", token);
-                        return RedirectToAction("Privacy", "Home");
+                        return RedirectToAction("DashBoard", "DashBoard");
 
                     }
                     ModelState.AddModelError("", "Invalid Username or Password");
